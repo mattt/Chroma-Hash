@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="author" content="Mattt Thompson">
+  <meta name="description" content="Chroma-Hash is a sexy, non-reversable live visualization of password field input">
+	<title>Chroma-Hash Demo</title>
+  <script src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" charset="utf-8">
+     google.load("jquery", "1.3.2");
+     google.load("jqueryui", "1.7.2");
+  </script>
+	<script src="chroma-hash.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+      $("input:password").chromaHash({number: 3});
+      $("#username").focus();
+    });
+	</script>
+	<style type="text/css" media="screen">
+    body{background:#ddd;font-size:1.3em;font-family:"Helvetica",Helvetica,sans-serif;}
+    h1,h2{text-align:center;}
+    h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
+    h2{color:#888;width:70%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;font-size:80%;font-style:italic;font-weight:normal;}
+    p,label{text-shadow:1px 1px 1px #f2f2f2;}
+    label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
+    p{font-size:87%;color:#444;}
+    input{width:440px;font-size:1.5em;margin-bottom:0.75em;}
+    .explanation{text-align:center;}
+    a{color:#444;}
+    a:hover{background:#ddd;}
+    a:visited{color:#565656;}
+    a:active{color:#fff;background:#444;text-shadow:none;}
+    fieldset{width:440px;margin:10px auto;border:none;}
+    hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
+    .container{padding:30px;width:480px;margin:100px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:1px 0px 5px #666;-khtml-box-sizing:content-box;box-sizing:content-box;
+    }
+	</style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Chroma-Hash</h1>
+    <h2>a sexy, non-reversable live visualization of password field input</h2>
+    <fieldset>
+      <label>Username</label>
+      <input type="text" name="username" value="" id="username">
+
+      <label>Password</label>
+      <input type="password" name="password" value="" id="password">
+
+      <label>Confirm Password</label>
+      <input type="password" name="confirm-password" value="" id="confirm-password">
+    </fieldset>
+    
+    <hr/>
+    <div class="explanation">
+      <p>Learn more and fork it for yourself at <tt><a href="http://github.com/mattt/Choma-Hash/">http://github.com/mattt/Choma-Hash/</a></tt></p>
+    </div>
+  </div>
+</body>
+</html>

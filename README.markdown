@@ -5,7 +5,9 @@ Chroma-Hash
 
 *In a tweet*: Chroma-Hash is a jQuery plugin that dynamically visualizes secure text-field values using ambient color bars
 
-*In a paragraph*: Password entry can be frustrating, especially with long or difficult passwords. On a webpage, secure fields obscure your input with •'s, so others can't read it. Unfortunately, neither can you—you can't tell if you got your password right until you click "Log In". Chroma-Hash displays a series of colored bars at the end of field inputs so you can instantly see if your password is right. Chroma-Hash takes an MD5 hash of your input and uses that to compute the colors in the visualization. The MD5 hash is non-reversible, so no one could know what your password just from the colors. Your password will display the same sequence each time, so you can learn to expect "blue, red, pink", for instance; if you instead see "green, purple, yellow", you'll know you typed it wrong.
+Password entry can be frustrating, especially with long or difficult passwords. On a webpage, secure fields obscure your input with •'s, so others can't read it. Unfortunately, neither can you—you can't tell if you got your password right until you click "Log In". 
+
+Chroma-Hash displays a series of colored bars at the end of field inputs so you can instantly see if your password is right. Chroma-Hash takes an MD5 hash of your input and uses that to compute the colors in the visualization. The MD5 hash is non-reversible, so no one could know what your password just from the colors. Your password will display the same sequence each time, so you can learn to expect "blue, red, pink", for instance; if you instead see "green, purple, yellow", you'll know you typed it wrong.
 
 ## Usage
 
@@ -45,8 +47,8 @@ Chroma-Hash is licensed under the MIT License:
   
 ## Credit
 
-Chroma-Hash uses Paul Johnston's Javascript MD5 implementation, and is distributed under the BSD License
-See [http://pajhome.org.uk/crypt/md5](http://pajhome.org.uk/crypt/md5) for more info.
+Chroma-Hash uses Paul Johnston's Javascript MD5 implementation, and is distributed under the BSD License  
+See [http://pajhome.org.uk/crypt/md5](http://pajhome.org.uk/crypt/md5) for more info
 
-Inspired in part by Arc90 Labs' HashMask
+Inspired in part by Arc90 Labs' HashMask  
 [http://lab.arc90.com/2009/07/hashmask.php](http://lab.arc90.com/2009/07/hashmask.php)

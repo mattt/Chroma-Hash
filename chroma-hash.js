@@ -1,6 +1,6 @@
 /*
  * Chroma-Hash : A sexy, non-reversable live visualization of password field input
- * http://github.com/mattt/Choma-Hash/
+ * http://github.com/mattt/Chroma-Hash/
  *
  * Copyright (c) 2009 Mattt Thompson
  * Licensed under the MIT licenses.

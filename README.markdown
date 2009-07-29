@@ -12,7 +12,7 @@ Chroma-Hash displays a series of colored bars at the end of field inputs so you 
 ## Demo
 
 Actions speak louder than words.  
-Try it out at: <tt>[http://mattt.github.com/chroma-hash/](http://mattt.github.com/chroma-hash/ "Try out Chroma-Hash!")</tt>
+Try it out at: <tt>[http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Chroma-Hash/ "Try out Chroma-Hash!")</tt>
 
 ## Usage
 

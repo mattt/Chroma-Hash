@@ -1,7 +1,7 @@
 Chroma-Hash
 ===========
 
-## A sexy, non-reversable live visualization of password field input
+## A sexy, secure visualization of password field input
 
 *In a tweet*: Chroma-Hash is a jQuery plugin that dynamically visualizes secure text-field values using ambient color bars
 
@@ -17,10 +17,12 @@ Try it out at: <tt>[http://mattt.github.com/Chroma-Hash/](http://mattt.github.co
 ## Usage
 
 <code>
-  $("input:password").chromaHash({number: 3});
+  $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6});
 </code>
 
-- <tt>number</tt> parameter controls the number of bars displayed (1,2,3, or 4)
+- <tt>bars</tt> number of bars displayed (1,2,3, or 4)
+- <tt>salt</tt> value to be appended when calculating hash function
+- <tt>minimum</tt> minimum number of characters needed for grayscale bars to be displayed in color
 
 ## Requirements
 - jQuery 1.3+

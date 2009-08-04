@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="author" content="Mattt Thompson">
-  <meta name="description" content="Chroma-Hash is a sexy, non-reversable live visualization of password field input">
+  <meta name="description" content="Chroma-Hash is a sexy, secure visualization of password field input">
 	<title>Chroma-Hash Demo</title>
   <script src="http://www.google.com/jsapi"></script>
   <script type="text/javascript" charset="utf-8">
@@ -15,7 +15,7 @@
 	<script src="chroma-hash.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 	  $(document).ready(function() {
-      $("input:password").chromaHash({number: 3});
+      $("input:password").chromaHash({bars: 3});
       $("#username").focus();
     });
 	</script>
@@ -23,10 +23,10 @@
     body{background:#ddd;font-size:1.3em;font-family:"Helvetica",Helvetica,sans-serif;}
     h1,h2{text-align:center;}
     h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
-    h2{color:#888;width:70%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;font-size:80%;font-style:italic;font-weight:normal;}
-    p,label{text-shadow:1px 1px 1px #f2f2f2;}
+    h2{color:#888;width:80%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;font-size:80%;font-style:italic;font-weight:normal;}
+    p,label, span{text-shadow:1px 1px 1px #f2f2f2;}
     label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
-    p{font-size:87%;color:#444;}
+    p{font-size:77%;color:#444;}
     input{width:440px;font-size:1.5em;margin-bottom:0.75em;}
     .explanation{text-align:center;}
     a{color:#444;}
@@ -35,30 +35,38 @@
     a:active{color:#fff;background:#444;text-shadow:none;}
     fieldset{width:440px;margin:10px auto;border:none;}
     hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
-    .container{padding:30px;width:480px;margin:100px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:1px 0px 5px #666;-khtml-box-sizing:content-box;box-sizing:content-box;
+    .container, .footer{width:480px;}
+    .container{padding:30px 30px;margin:100px auto 30px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:1px 0px 5px #666;-khtml-box-sizing:content-box;box-sizing:content-box;
     }
+    .footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:0.6em;}
+    .footer span{display:block;line-height:1.5em;}
 	</style>
 </head>
 
 <body>
+  <a href="http://github.com/mattt/Chroma-Hash/">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+  </a>
   <div class="container">
     <h1>Chroma-Hash</h1>
-    <h2>a sexy, non-reversible live visualization of password field input</h2>
+    <h2>a sexy, secure visualization of password field input</h2>
     <fieldset>
       <label>Username</label>
       <input type="text" name="username" value="" id="username">
-
       <label>Password</label>
       <input type="password" name="password" value="" id="password">
-
       <label>Confirm Password</label>
       <input type="password" name="confirm-password" value="" id="confirm-password">
     </fieldset>
-    
     <hr/>
     <div class="explanation">
-      <p>Learn more and fork it for yourself at <tt><a href="http://github.com/mattt/Chroma-Hash/">http://github.com/mattt/Chroma-Hash/</a></tt></p>
+      <p>Looking for some more explanation? Have some feedback?<br/>Check out <a href="http://mattt.me/2009/07/chroma-hash-a-belated-introduction/">my blog post about Chroma-Hash</a></p>
     </div>
   </div>
+  <div class="footer">
+    <span class="copyright">&copy; <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a> - Released Under an MIT License</span>
+    <span class="version">Last Revised: August 4, 2009</span>
+  </div>
+      
 </body>
 </html>

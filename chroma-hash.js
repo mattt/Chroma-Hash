@@ -36,52 +36,54 @@
                       return $(this).attr('for') == id;
                   });
         };
+        
+        var trigger = function(e) {
+          if($(this).val() == "" ){
+            chromaHashesForElement(this).animate({backgroundColor: "#ffffff"});
+            return;
+          }
+          
+          height     = $(this).height();
+          position   = $(this).position();
+          width      = $(this).outerWidth();
+
+          chromaHashesForElement(this).each(function(i) {
+            $(this).css({position:   'absolute',
+                         left:       position.left + width - 2,
+                         top:        position.top,
+                         height:     height + "px",
+                         width:      8 + "px",
+                         margin:     5 + "px",
+                         marginLeft: -8 * (i + 1) + "px"
+                        });
+          });
+          
+          var id     = $(this).attr('id');
+          var md5    = hex_md5('' + $(this).val() + ':' + o.salt);
+          var colors = md5.match(/([\dABCDEF]{6})/ig);
+          $(".chroma-hash").stop();
+          
+          if($(this).val().length < o.minimum) {             
+            chromaHashesForElement(this).each(function(i) {
+              var g = (parseInt(colors[i], 0x10) % 0xF).toString(0x10);
+              $(this).animate({backgroundColor:"#" + g + g + g});
+            });
+          }
+          else {
+            chromaHashesForElement(this).each(function(i) {
+              $(this).animate({backgroundColor:"#" + colors[i]});
+            });
+          }
+        };
 
         obj.each(function(e) {
           for(c in colors) {
             $(this).after('<label for="' + $(this).attr('id') + '" class="' + colors[c] + ' chroma-hash"></label>');
           }
 
-          $(this).keyup(function(e){
-            if($(this).val() == "" ){
-              chromaHashesForElement(this).animate({backgroundColor: "#ffffff"});
-              return;
-            }
-            
-            height     = $(this).height();
-            position   = $(this).position();
-            width      = $(this).outerWidth();
-
-            chromaHashesForElement(this).each(function(i) {
-              $(this).css({position:   'absolute',
-                           left:       position.left + width - 2,
-                           top:        position.top,
-                           height:     height + "px",
-                           width:      8 + "px",
-                           margin:     5 + "px",
-                           marginLeft: -8 * (i + 1) + "px"
-                          }
-                    );
-              });
-            
-              var id     = $(this).attr('id');
-              var md5    = hex_md5('' + $(this).val() + ':' + o.salt);
-              var colors = md5.match(/([\dABCDEF]{6})/ig);
-              $(".chroma-hash").stop();
-              
-              if($(this).val().length < o.minimum) {             
-                chromaHashesForElement(this).each(function(i) {
-                  var g = (parseInt(colors[i], 0x10) % 0xF).toString(0x10);
-                  $(this).animate({backgroundColor:"#" + g + g + g});
-                });
-              }
-              else {
-                chromaHashesForElement(this).each(function(i) {
-                  $(this).animate({backgroundColor:"#" + colors[i]});
-                });
-              }
-            });
-          });
+          $(this).bind('keyup', trigger);
+          $(this).bind('blur', trigger);
+        });
         
           /*
            * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message

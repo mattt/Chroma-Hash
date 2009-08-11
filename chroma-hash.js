@@ -1,5 +1,5 @@
 /*
- * Chroma-Hash : A sexy, non-reversable live visualization of password field input
+ * Chroma-Hash : A sexy, secure visualization of password field input
  * http://github.com/mattt/Chroma-Hash/
  *
  * Copyright (c) 2009 Mattt Thompson
@@ -9,7 +9,7 @@
 (function($){
   $.fn.extend({
     chromaHash: function(options) {
-    
+
       var defaults = {
           bars: 3,
           salt: "7be82b35cb0199120eea35a4507c9acf",
@@ -19,10 +19,9 @@
       var options = $.extend(defaults, options);
 
       return this.each(function() {
-        
+
         var o     = options;
         var obj   = $(this);
-      
 
         if(o.bars < 1 || o.bars > 4) {
           console.log("[Warning] Chroma-Hash expects a number parameter between 1 and 4, given " + o.bars);
@@ -30,48 +29,65 @@
 
         var colors = ["primary", "secondary", "tertiary", "quaternary"].slice(0, o.bars);
 
-        var chromaHashesForElement = function(e) {     
+        var chromaHashesForElement = function(e) {
           id = $(e).attr('id');
           return $("label.chroma-hash").filter(function(l) {
                       return $(this).attr('for') == id;
                   });
         };
-        
+
         var trigger = function(e) {
           if($(this).val() == "" ){
-            chromaHashesForElement(this).animate({backgroundColor: "#ffffff"});
+            chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
             return;
           }
-          
-          height     = $(this).height();
+
           position   = $(this).position();
+          height     = $(this).outerHeight();
           width      = $(this).outerWidth();
 
           chromaHashesForElement(this).each(function(i) {
-            $(this).css({position:   'absolute',
-                         left:       position.left + width - 2,
-                         top:        position.top,
-                         height:     height + "px",
-                         width:      8 + "px",
-                         margin:     5 + "px",
-                         marginLeft: -8 * (i + 1) + "px"
-                        });
+            properties = {
+                          position:   'absolute',
+                          opacity:     1.0,
+                          left:       position.left + width - 1,
+                          top:        position.top,
+                          height:     height - 2 + "px",
+                          width:      8 + "px",
+                          margin:     0 + "px",
+                          marginLeft: -8 * (++i) + "px"
+                        }
+            if($.browser.safari){
+              properties.marginTop = 3 + "px";
+            }
+            else{
+              properties.marginTop = 1 + "px";
+            }
+            $(this).css(properties);
           });
-          
+
           var id     = $(this).attr('id');
           var md5    = hex_md5('' + $(this).val() + ':' + o.salt);
           var colors = md5.match(/([\dABCDEF]{6})/ig);
           $(".chroma-hash").stop();
-          
-          if($(this).val().length < o.minimum) {             
+
+          if($(this).val().length < o.minimum) {
             chromaHashesForElement(this).each(function(i) {
-              var g = (parseInt(colors[i], 0x10) % 0xF).toString(0x10);
+              var g = (parseInt(colors[i], 16) % 0xF).toString(16);
               $(this).animate({backgroundColor:"#" + g + g + g});
             });
           }
           else {
             chromaHashesForElement(this).each(function(i) {
-              $(this).animate({backgroundColor:"#" + colors[i]});
+              var color = parseInt(colors[i], 16);
+              var red   = (color >> 16) & 255;
+              var green = (color >> 8) & 255;
+              var blue  = color & 255;
+              var hex   = $.map([red, green, blue], function(c, i) {
+                return ((c >> 4) * 0x10).toString(16);
+              }).join('');
+
+              $(this).animate({backgroundColor:"#" + hex});
             });
           }
         };
@@ -80,11 +96,12 @@
           for(c in colors) {
             $(this).after('<label for="' + $(this).attr('id') + '" class="' + colors[c] + ' chroma-hash"></label>');
           }
+          chromaHashesForElement(this).css({backgroundColor: "#FFF", opacity: 0})
 
-          $(this).bind('keyup', trigger);
-          $(this).bind('blur', trigger);
+          $(this).bind('keyup', trigger).bind('blur', trigger);
         });
-        
+
+
           /*
            * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
            * Digest Algorithm, as defined in RFC 1321.
@@ -98,3 +115,10 @@
       }
     });
 })(jQuery);
+
+/*
+ * jQuery Color Animations
+ * Copyright 2007 John Resig
+ * Released under the MIT and GPL licenses.
+ */
+(function(D){D.each(["backgroundColor","borderBottomColor","borderLeftColor","borderRightColor","borderTopColor","color","outlineColor"],function(F,E){D.fx.step[E]=function(G){if(G.state==0){G.start=C(G.elem,E);G.end=B(G.end);}G.elem.style[E]="rgb("+[Math.max(Math.min(parseInt((G.pos*(G.end[0]-G.start[0]))+G.start[0]),255),0),Math.max(Math.min(parseInt((G.pos*(G.end[1]-G.start[1]))+G.start[1]),255),0),Math.max(Math.min(parseInt((G.pos*(G.end[2]-G.start[2]))+G.start[2]),255),0)].join(",")+")";};});function B(F){var E;if(F&&F.constructor==Array&&F.length==3){return F;}if(E=/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(F)){return[parseInt(E[1]),parseInt(E[2]),parseInt(E[3])];}if(E=/rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec(F)){return[parseFloat(E[1])*2.55,parseFloat(E[2])*2.55,parseFloat(E[3])*2.55];}if(E=/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec(F)){return[parseInt(E[1],16),parseInt(E[2],16),parseInt(E[3],16)];}if(E=/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec(F)){return[parseInt(E[1]+E[1],16),parseInt(E[2]+E[2],16),parseInt(E[3]+E[3],16)];}return A[D.trim(F).toLowerCase()];}function C(G,E){var F;do{F=D.curCSS(G,E);if(F!=""&&F!="transparent"||D.nodeName(G,"body")){break;}E="backgroundColor";}while(G=G.parentNode);return B(F);}var A={aqua:[0,255,255],azure:[240,255,255],beige:[245,245,220],black:[0,0,0],blue:[0,0,255],brown:[165,42,42],cyan:[0,255,255],darkblue:[0,0,139],darkcyan:[0,139,139],darkgrey:[169,169,169],darkgreen:[0,100,0],darkkhaki:[189,183,107],darkmagenta:[139,0,139],darkolivegreen:[85,107,47],darkorange:[255,140,0],darkorchid:[153,50,204],darkred:[139,0,0],darksalmon:[233,150,122],darkviolet:[148,0,211],fuchsia:[255,0,255],gold:[255,215,0],green:[0,128,0],indigo:[75,0,130],khaki:[240,230,140],lightblue:[173,216,230],lightcyan:[224,255,255],lightgreen:[144,238,144],lightgrey:[211,211,211],lightpink:[255,182,193],lightyellow:[255,255,224],lime:[0,255,0],magenta:[255,0,255],maroon:[128,0,0],navy:[0,0,128],olive:[128,128,0],orange:[255,165,0],pink:[255,192,203],purple:[128,0,128],violet:[128,0,128],red:[255,0,0],silver:[192,192,192],white:[255,255,255],yellow:[255,255,0]};})(jQuery);

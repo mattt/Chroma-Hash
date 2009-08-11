@@ -10,7 +10,7 @@
 (function($){
   $.fn.extend({
     chromaHash: function(options) {
-    
+
       var defaults = {
           bars: 3,
           salt: "7be82b35cb0199120eea35a4507c9acf",
@@ -20,66 +20,74 @@
       var options = $.extend(defaults, options);
 
       return this.each(function() {
-        
+
         var o     = options;
         var obj   = $(this);
-      
+
         if(o.bars < 1 || o.bars > 4) {
           console.log("[Warning] Chroma-Hash expects a number parameter between 1 and 4, given " + o.bars);
         }
 
         var colors = ["primary", "secondary", "tertiary", "quaternary"].slice(0, o.bars);
 
-        var chromaHashesForElement = function(e) {     
+        var chromaHashesForElement = function(e) {
           id = $(e).attr('id');
           return $("label.chroma-hash").filter(function(l) {
                       return $(this).attr('for') == id;
                   });
         };
-        
+
         var trigger = function(e) {
           if($(this).val() == "" ){
             chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
             return;
           }
-          
+
           position   = $(this).position();
           height     = $(this).outerHeight();
           width      = $(this).outerWidth();
 
           chromaHashesForElement(this).each(function(i) {
-            $(this).css({position:   'absolute',
-                         opacity:     1,
-                         left:       position.left + width - 2,
-                         top:        position.top,
-                         height:     height + "px",
-                         width:      8 + "px",
-                         margin:     3 + "px",
-                         marginLeft: -8 * (i + 1) + "px"
-                        });
+            properties = {
+                          position:   'absolute',
+                          opacity:     1.0,
+                          left:       position.left + width - 1,
+                          top:        position.top,
+                          height:     height - 2 + "px",
+                          width:      8 + "px",
+                          margin:     0 + "px",
+                          marginLeft: -8 * (++i) + "px"
+                        }
+            if($.browser.safari){
+              properties.marginTop = 3 + "px";
+            }
+            else{
+              properties.marginTop = 1 + "px";
+            }
+            $(this).css(properties);
           });
-          
+
           var id     = $(this).attr('id');
           var md5    = hex_md5('' + $(this).val() + ':' + o.salt);
           var colors = md5.match(/([\dABCDEF]{6})/ig);
           $(".chroma-hash").stop();
-          
-          if($(this).val().length < o.minimum) {             
+
+          if($(this).val().length < o.minimum) {
             chromaHashesForElement(this).each(function(i) {
-              var g = (parseInt(colors[i], 0x10) % 0xF).toString(0x10);
+              var g = (parseInt(colors[i], 16) % 0xF).toString(16);
               $(this).animate({backgroundColor:"#" + g + g + g});
             });
           }
           else {
             chromaHashesForElement(this).each(function(i) {
-              var color = parseInt(colors[i], 0x10);
+              var color = parseInt(colors[i], 16);
               var red   = (color >> 16) & 255;
               var green = (color >> 8) & 255;
               var blue  = color & 255;
               var hex   = $.map([red, green, blue], function(c, i) {
-                return ((c >> 4) * 16).toString(16);
+                return ((c >> 4) * 0x10).toString(16);
               }).join('');
-              
+
               $(this).animate({backgroundColor:"#" + hex});
             });
           }
@@ -91,11 +99,10 @@
           }
           chromaHashesForElement(this).css({backgroundColor: "#FFF", opacity: 0})
 
-          $(this).bind('keyup', trigger);
-          $(this).bind('blur', trigger);
+          $(this).bind('keyup', trigger).bind('blur', trigger);
         });
-        
-        
+
+
           /*
            * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
            * Digest Algorithm, as defined in RFC 1321.

@@ -56,7 +56,7 @@ Chroma-Hash is licensed under the MIT License:
 Chroma-Hash uses Paul Johnston's Javascript MD5 implementation, and is distributed under the BSD License  
 See [http://pajhome.org.uk/crypt/md5](http://pajhome.org.uk/crypt/md5) for more info
 
-Includes jQuery Color Animations plugin, Copyright 2007 John Resig Released under the MIT and GPL licenses
+Includes jQuery Color Animations plugin, Copyright 2007 John Resig Released under the MIT and GPL licenses  
 See [http://plugins.jquery.com/project/color](http://plugins.jquery.com/project/color) for jQuery project page
 
 Inspired by Arc90 Labs' HashMask  

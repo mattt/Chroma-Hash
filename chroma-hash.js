@@ -1,4 +1,3 @@
-
 /*
  * Chroma-Hash : A sexy, secure visualization of password field input
  * http://github.com/mattt/Chroma-Hash/

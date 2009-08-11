@@ -26,7 +26,6 @@ Try it out at: <tt>[http://mattt.github.com/Chroma-Hash/](http://mattt.github.co
 
 ## Requirements
 - jQuery 1.3+
-- jQuery UI 1.7+
 
 ## License
 
@@ -57,5 +56,8 @@ Chroma-Hash is licensed under the MIT License:
 Chroma-Hash uses Paul Johnston's Javascript MD5 implementation, and is distributed under the BSD License  
 See [http://pajhome.org.uk/crypt/md5](http://pajhome.org.uk/crypt/md5) for more info
 
-Inspired in part by Arc90 Labs' HashMask  
+Includes jQuery Color Animations plugin, Copyright 2007 John Resig Released under the MIT and GPL licenses
+See [http://plugins.jquery.com/project/color](http://plugins.jquery.com/project/color) for jQuery project page
+
+Inspired by Arc90 Labs' HashMask  
 [http://lab.arc90.com/2009/07/hashmask.php](http://lab.arc90.com/2009/07/hashmask.php)

@@ -37,14 +37,16 @@
         };
 
         var trigger = function(e) {
-          if($(this).val() == "" ){
+          var input = $(this);
+          
+          if(input.val() == "" ){
             chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
             return;
           }
 
-          position   = $(this).position();
-          height     = $(this).outerHeight();
-          width      = $(this).outerWidth();
+          position   = input.position();
+          height     = input.outerHeight();
+          width      = input.outerWidth();
 
           chromaHashesForElement(this).each(function(i) {
             properties = {
@@ -66,12 +68,12 @@
             $(this).css(properties);
           });
 
-          var id     = $(this).attr('id');
-          var md5    = hex_md5('' + $(this).val() + ':' + o.salt);
+          var id     = input.attr('id');
+          var md5    = hex_md5('' + input.val() + ':' + o.salt);
           var colors = md5.match(/([\dABCDEF]{6})/ig);
           $(".chroma-hash").stop();
 
-          if($(this).val().length < o.minimum) {
+          if(input.val().length < o.minimum) {
             chromaHashesForElement(this).each(function(i) {
               var g = (parseInt(colors[i], 16) % 0xF).toString(16);
               $(this).animate({backgroundColor:"#" + g + g + g});

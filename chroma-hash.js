@@ -4,6 +4,9 @@
  *
  * Copyright (c) 2009 Mattt Thompson
  * Licensed under the MIT licenses.
+ * 
+ * Inspired by HashMask by Chris Dary
+ * http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/
  */
 
 (function($){

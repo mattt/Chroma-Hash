@@ -16,7 +16,8 @@
       var defaults = {
           bars: 3,
           salt: "7be82b35cb0199120eea35a4507c9acf",
-          minimum: 6
+          minimum: 6,
+          animateDuration: undefined
       };
 
       var options = $.extend(defaults, options);
@@ -43,7 +44,7 @@
           var input = $(this);
           
           if(input.val() == "" ){
-            chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
+            chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0}, options.animateDuration);
             return;
           }
 
@@ -79,7 +80,7 @@
           if(input.val().length < o.minimum) {
             chromaHashesForElement(this).each(function(i) {
               var g = (parseInt(colors[i], 16) % 0xF).toString(16);
-              $(this).animate({backgroundColor:"#" + g + g + g});
+              $(this).animate({backgroundColor:"#" + g + g + g}, options.animateDuration);
             });
           }
           else {
@@ -92,7 +93,7 @@
                 return ((c >> 4) * 0x10).toString(16);
               }).join('');
 
-              $(this).animate({backgroundColor:"#" + hex});
+              $(this).animate({backgroundColor:"#" + hex}, options.animateDuration);
             });
           }
         };

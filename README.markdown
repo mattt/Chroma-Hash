@@ -23,6 +23,7 @@ Try it out at: [http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Ch
 - `bars` : number of bars displayed (1,2,3, or 4)
 - `salt` : value to be appended when calculating hash function
 - `minimum` : minimum number of characters needed for grayscale bars to be displayed in color
+- `animateDuration` : see `duration` option to jQuery's [`.animate()`](http://api.jquery.com/animate/)
 
 ## Requirements
 

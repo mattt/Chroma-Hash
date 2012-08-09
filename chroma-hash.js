@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2009 Mattt Thompson
  * Licensed under the MIT licenses.
- * 
+ *
  * Inspired by HashMask by Chris Dary
  * http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/
  */
@@ -20,20 +20,22 @@
       };
 
       var options = $.extend(defaults, options);
+      var incrementingID = 0;
 
       return this.each(function() {
-
         var o     = options;
         var obj   = $(this);
 
-        if(o.bars < 1 || o.bars > 4) {
+        if (o.bars < 1 || o.bars > 4) {
           console.log("[Warning] Chroma-Hash expects a number parameter between 1 and 4, given " + o.bars);
         }
 
         var colors = ["primary", "secondary", "tertiary", "quaternary"].slice(0, o.bars);
 
+
         var chromaHashesForElement = function(e) {
-          id = $(e).attr('id');
+          var id = $(e).attr('id');
+
           return $("label.chroma-hash").filter(function(l) {
                       return $(this).attr('for') == id;
                   });
@@ -41,8 +43,8 @@
 
         var trigger = function(e) {
           var input = $(this);
-          
-          if(input.val() == "" ){
+
+          if (input.val() === "") {
             chromaHashesForElement(this).animate({backgroundColor: "#ffffff", opacity: 0});
             return;
           }
@@ -53,21 +55,22 @@
 
           chromaHashesForElement(this).each(function(i) {
             properties = {
-                          position:   'absolute',
-                          opacity:     1.0,
-                          left:       position.left + width - 1,
-                          top:        position.top,
-                          height:     height - 2 + "px",
-                          width:      8 + "px",
-                          margin:     0 + "px",
-                          marginLeft: -8 * (++i) + "px"
-                        }
-            if($.browser.safari){
-              properties.marginTop = 3 + "px";
+              position:   'absolute',
+              opacity:     1.0,
+              left:       position.left + width - 1,
+              top:        position.top,
+              height:     height - 2 + "px",
+              width:      8 + "px",
+              margin:     0 + "px",
+              marginLeft: -8 * (++i) + "px"
             }
-            else{
+
+            if ($.browser.safari) {
+              properties.marginTop = 3 + "px";
+            } else {
               properties.marginTop = 1 + "px";
             }
+
             $(this).css(properties);
           });
 
@@ -76,13 +79,12 @@
           var colors = md5.match(/([\dABCDEF]{6})/ig);
           $(".chroma-hash").stop();
 
-          if(input.val().length < o.minimum) {
+          if (input.val().length < o.minimum) {
             chromaHashesForElement(this).each(function(i) {
               var g = (parseInt(colors[i], 16) % 0xF).toString(16);
               $(this).animate({backgroundColor:"#" + g + g + g});
             });
-          }
-          else {
+          } else {
             chromaHashesForElement(this).each(function(i) {
               var color = parseInt(colors[i], 16);
               var red   = (color >> 16) & 255;
@@ -98,14 +100,22 @@
         };
 
         obj.each(function(e) {
-          for(c in colors) {
-            $(this).after('<label for="' + $(this).attr('id') + '" class="' + colors[c] + ' chroma-hash"></label>');
+          $obj = $(this);
+
+          var id = $obj.attr('id');
+          if (!id || id==="") {
+            id = "chroma-hash_" + incrementingID++;
+            $obj.attr('id', id);
           }
-          chromaHashesForElement(this).css({backgroundColor: "#FFF", opacity: 0})
 
-          $(this).bind('keyup', trigger).bind('blur', trigger);
+          for(c in colors) {
+            $obj.after('<label for="' + id + '" class="' + colors[c] + ' chroma-hash"></label>');
+          }
+
+          chromaHashesForElement($obj).css({backgroundColor: "#FFF", opacity: 0})
+
+          $obj.bind('keyup', trigger).bind('blur', trigger);
         });
-
 
           /*
            * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message

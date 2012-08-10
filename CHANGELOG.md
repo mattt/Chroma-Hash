@@ -1,3 +1,7 @@
+## Version 0.4.1 [2012-8-9]
+
+- [Changed] Renamed chroma-hash.js to jquery.chroma-hash.js, in order to better-communicate jQuery dependency
+
 ## Version 0.4 [2012-8-9]
 
 - [Bugfix] Chroma-Hash function now works for password elements that do not have an id attribue

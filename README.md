@@ -13,12 +13,13 @@ For a more detailed description of Chroma-Hash, be sure to [check out this blog 
 
 ## Demo
 
-Actions speak louder than words.
-Try it out at: [http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Chroma-Hash/ "Try out Chroma-Hash!")
+Actions speak louder than words. Try it out at: [http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Chroma-Hash/ "Try out Chroma-Hash!")
 
 ## Usage
 
-    $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6});
+```javascript
+$("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6});
+```
 
 - `bars` : number of bars displayed (1,2,3, or 4)
 - `salt` : value to be appended when calculating hash function

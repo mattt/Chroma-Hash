@@ -6,16 +6,16 @@
     <meta name="author" content="Mattt Thompson"/>
     <meta name="description" content="Chroma-Hash is a sexy, secure visualization of password field input"/>
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  	<script src="jquery.chroma-hash.js" type="text/javascript" charset="utf-8"></script>
-  	<script type="text/javascript" charset="utf-8">
-  	  $(document).ready(function() {
+    <script src="jquery.chroma-hash.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
         $("input:password").chromaHash({bars: 3});
         $("#username").focus();
       });
-  	</script>
-  	<style type="text/css" media="screen">
+    </script>
+    <style type="text/css" media="screen">
       body{background:#ddd;font-size:120%;font-family:"Helvetica",Helvetica,sans-serif;}
-      h1,h2{text-align:center;}
+      hgroup{text-align:center;}
       h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
       h2{color:#888;width:80%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;  font-size:80%;font-style:italic;font-weight:normal;}
       p,label, span{text-shadow:1px 1px 1px #f2f2f2;}
@@ -32,9 +32,9 @@
       .container, .footer{width:480px;}
       .container{padding:30px 30px;margin:30px auto 30px auto;background:#fff;-moz-border  -radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11  px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:0px 2px 5px #888;-khtml-box-sizing:content-box;box-sizing:content-box;
       }
-      .footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:0.6em;}
-      .footer span{display:block;line-height:1.5em;}
-  	</style>
+      footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:0.6em;}
+      footer span{display:block;line-height:1.5em;}
+    </style>
     <link href="http://opensource.org/licenses/mit-license" rel="license"/>
   </head>
 
@@ -43,8 +43,10 @@
       <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on   GitHub"/>
     </a>
     <div class="container">
-      <h1>Chroma-Hash</h1>
-      <h2>a sexy, secure visualization of password field input</h2>
+      <hgroup>
+        <h1>Chroma-Hash</h1>
+        <h2>a sexy, secure visualization of password field input</h2>
+      </hgroup>
       <fieldset>
         <label>Username</label>
         <input type="text" name="username" id="username">
@@ -58,8 +60,8 @@
         <p>Looking for some more explanation? Have some feedback?<br/>Check out <a href="http://mattt.me/2009/11/chroma-hash-revisited/">my most recent blog post about Chroma-Hash</a></p>
       </div>
     </div>
-    <div class="footer">
+    <footer>
       <span class="copyright">© <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a> - Released Under an <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a></span>
-    </div>
+    </footer>
   </body>
 </html>

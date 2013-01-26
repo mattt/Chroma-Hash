@@ -9,11 +9,11 @@ Password entry can be frustrating, especially with long or difficult passwords. 
 
 Chroma-Hash displays a series of colored bars at the end of field inputs so you can instantly see if your password is right. Chroma-Hash takes an MD5 hash of your input and uses that to compute the colors in the visualization. The resulting color pattern is non-reversible, so no one could know what your password just from the colors.
 
-For a more detailed description of Chroma-Hash, be sure to [check out this blog post about it.](http://mattt.me/2009/11/chroma-hash-revisited/).
+For a more detailed description of Chroma-Hash, be sure to [check out this blog post about it.](http://mattt.me/2009/chroma-hash-revisited/).
 
 ## Demo
 
-Actions speak louder than words. Try it out at: [http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Chroma-Hash/ "Try out Chroma-Hash!")
+Actions speak louder than words. Try it out at: [http://mattt.github.com/Chroma-Hash/](http://mattt.github.com/Chroma-Hash/)
 
 ## Usage
 

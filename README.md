@@ -1,7 +1,7 @@
 Chroma-Hash
 ===========
 
-## A sexy, secure visualization of password field input
+**A sexy, secure visualization of password field input**
 
 Chroma-Hash is a jQuery plugin that dynamically visualizes secure text-field values using ambient color bars
 
@@ -38,7 +38,7 @@ Chroma-Hash is also available in your choice of Javascript libraries and languag
 - [pyChroma (Python) - leegao (Lee Gao)](http://github.com/leegao/pyChroma)
 - [ChromaHash4j (Java) - efi (Thomas Efer)](http://github.com/efi/ChromaHash4j)
 
-For the more acoustically-inclined, be sure to check out [Sonic-Hash](http://mattt.github.com/Sonic-Hash/), which is like its older brother, but uses sounds instead of colors.
+> For the more acoustically-inclined, be sure to check out [Sonic-Hash](http://mattt.github.com/Sonic-Hash/), which is like its older brother, but uses sounds instead of colors.
 
 ## Credit
 

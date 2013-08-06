@@ -26,7 +26,8 @@
       // functions
       var trigger = function(e) {
         var $input = $(e.currentTarget),
-            $colorBars = $(e.currentTarget).data('chroma-hash-colorBars').find('label');
+            $wrapper = $(e.currentTarget).data('chroma-hash-colorBars'),
+            $colorBars = $wrapper.find('div');
 
 
         if ($input.val() === "") {
@@ -40,13 +41,14 @@
 
         var md5    = hex_md5('' + $input.val() + ':' + options.salt);
         var colors = md5.match(/([\dABCDEF]{6})/ig);
-        $colorBars.stop();
 
+        // change colors
         if ($input.val().length < options.minimum) {
-          $colorBars.each(function(i) {
+          $colorBars.each(function(i, item) {
             var g = (parseInt(colors[i], 16) % 0xF).toString(16);
-            $(this).css({backgroundColor:"#" + g + g + g});
+            $(item).css({'background': "#" + g + g + g});
           });
+
         } else {
           $colorBars.each(function(i, item) {
             var color = parseInt(colors[i], 16);
@@ -57,7 +59,7 @@
               return ((c >> 4) * 0x10).toString(16);
             }).join('');
 
-            $(item).css({backgroundColor:"#" + hex});
+            $(item).css({'background': "#" + hex});
           });
         }
       };
@@ -118,22 +120,22 @@
           "top":        position.top + parseInt($input.css('border-top-width'),10),
           "height":     height,
           "width":      options.barWidth * options.bars,
-          "marginLeft": -options.barWidth * options.bars,
+          "marginLeft": -options.barWidth * options.bars
         });
         $input.after(colorWrapper);
 
         // add color bars
         var i = 0;
         for(c in colors) {
-          var colorBar = $('<label class="' + colors[c] + 'chroma-hash"></label>');
+          var colorBar = $('<div class="' + colors[c] + '-chroma-hash"></div>');
           colorBar.css({
             "position":   'absolute',
-            "display":    'block',
             "opacity":    1,
             "left":       options.barWidth * i,
             "top":        0,
             "height":     '100%',
-            "width":      options.barWidth
+            "width":      options.barWidth,
+
           });
           colorWrapper.append(colorBar);
           $input.data('chroma-hash-colorBars', colorWrapper);

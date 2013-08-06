@@ -128,10 +128,11 @@
           var colorBar = $('<label class="' + colors[c] + 'chroma-hash"></label>');
           colorBar.css({
             "position":   'absolute',
+            "display":    'block',
             "opacity":    1,
             "left":       options.barWidth * i,
             "top":        0,
-            "height":     height,
+            "height":     '100%',
             "width":      options.barWidth,
 
             "transition":         "background-color 0.5s",

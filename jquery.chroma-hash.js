@@ -133,12 +133,7 @@
             "left":       options.barWidth * i,
             "top":        0,
             "height":     '100%',
-            "width":      options.barWidth,
-
-            "transition":         "background-color 0.5s",
-            "-moz-transition":    "background-color 0.5s",
-            "-webkit-transition": "background-color 0.5s",
-            "-o-transition":      "background-color 0.5s",
+            "width":      options.barWidth
           });
           colorWrapper.append(colorBar);
           $input.data('chroma-hash-colorBars', colorWrapper);

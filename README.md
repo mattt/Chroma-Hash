@@ -19,9 +19,16 @@ Actions speak louder than words. Try it out at: [http://mattt.github.com/Chroma-
 
 ```javascript
 $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf", minimum:6});
+
+// To remove it call
+$("input:password").chromaHash('destroy');
 ```
 
+To style the chroma hash use the `.chroma-hash` class, as the bars are wrapped inside a `<div class="chroma-hash"><label>...</div>`
+
+
 - `bars` : number of bars displayed (1,2,3, or 4)
+- `barWidth` : number of px of a single bar width (default: 8)
 - `salt` : value to be appended when calculating hash function
 - `minimum` : minimum number of characters needed for grayscale bars to be displayed in color
 
@@ -57,6 +64,11 @@ Mattt Thompson
 - http://github.com/mattt
 - http://twitter.com/mattt
 - m@mattt.me
+
+Rewritten by
+Fabian Vogelsteller
+- http://frozeman.de
+- http://twitter.com/feindura
 
 ## License
 

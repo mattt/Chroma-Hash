@@ -66,7 +66,7 @@
               "-o-transition":      "background-color 0.5s",
             }
 
-            if ($.browser.safari) {
+            if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
               properties.marginTop = 3 + "px";
             } else {
               properties.marginTop = 1 + "px";

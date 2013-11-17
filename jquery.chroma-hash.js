@@ -83,12 +83,10 @@
               var md5 = hex_md5('' + input.val() + ':' + options.salt);
               var colors = md5.match(/([\dABCDEF]{6})/ig);
 
-              $(".chroma-hash").stop();
-
               if (input.val().length < options.minimum) {
                 chromaHashesForElement(this).each(function(i) {
                   var g = (parseInt(colors[i], 16) % 0xF).toString(16);
-                  $(this).css({
+                  $(this).stop().css({
                     backgroundColor: "#" + g + g + g
                   });
                 });
@@ -102,7 +100,7 @@
                     return ((c >> 4) * 0x10).toString(16);
                   }).join('');
 
-                  $(this).css({
+                  $(this).stop().css({
                     backgroundColor: "#" + hex
                   });
                 });

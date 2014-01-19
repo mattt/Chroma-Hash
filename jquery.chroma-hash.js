@@ -10,6 +10,28 @@
  */
 
 (function($) {
+
+    //Adapted from http://stackoverflow.com/a/7265037/278810
+    var transitionSupport = (function() {
+        var b = document.body || document.documentElement;
+        var s = b.style;
+        var p = "transition";
+
+        //Test for standard transition property
+        if (typeof s[p] == 'string') { return true; }
+
+        //Test for vendor-specific transition properties
+        v = ["moz", "webkit", "khtml", "o", "ms"],
+        p = p.charAt(0).toUpperCase() + p.substr(1);
+        for (var i = 0; i < v.length; i++) {
+          if (typeof s[v[i] + p] == "string") { return true; }
+        }
+        return false;
+    })();
+
+    //If the browser doesn't support CSS transitions, fall back to jQuery.animate()
+    var jqApplyStyle = transitionSupport ? "css" : "animate";
+
     $.fn.extend({
       chromaHash: function(options) {
         var defaults = {
@@ -18,7 +40,7 @@
           minimum: 6
         };
 
-        var options = $.extend(defaults, options);
+        options = $.extend(defaults, options);
         var incrementingID = 0;
 
         return this.each(function() {
@@ -41,9 +63,9 @@
               var input = $(this);
 
               if (input.val() === "") {
-                chromaHashesForElement(this).animate({
-                  backgroundColor: "#ffffff",
-                  opacity: 0
+                chromaHashesForElement(this)[jqApplyStyle]({
+                  "background": "#FFF",
+                  "opacity": 0
                 });
 
                 return;
@@ -67,8 +89,10 @@
                   "transition": "background-color 0.5s",
                   "-moz-transition": "background-color 0.5s",
                   "-webkit-transition": "background-color 0.5s",
+                  "-khtml-transition": "background-color 0.5s",
                   "-o-transition": "background-color 0.5s",
-                }
+                  "-ms-transition": "background-color 0.5s",
+                };
 
                 if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
                   properties.marginTop = 3 + "px";
@@ -86,9 +110,7 @@
               if (input.val().length < options.minimum) {
                 chromaHashesForElement(this).each(function(i) {
                   var g = (parseInt(colors[i], 16) % 0xF).toString(16);
-                  $(this).stop().css({
-                    backgroundColor: "#" + g + g + g
-                  });
+                  $(this).stop()[jqApplyStyle]("background", "#" + g + g + g);
                 });
               } else {
                 chromaHashesForElement(this).each(function(i) {
@@ -100,9 +122,7 @@
                     return ((c >> 4) * 0x10).toString(16);
                   }).join('');
 
-                  $(this).stop().css({
-                    backgroundColor: "#" + hex
-                  });
+                  $(this).stop()[jqApplyStyle]("background", "#" + hex);
                 });
               }
             };
@@ -116,14 +136,14 @@
                 $input.attr('id', id);
               }
 
-              for (c in colors) {
+              for (var c in colors) {
                 $input.after('<label for="' + id + '" class="' + colors[c] + ' chroma-hash"></label>');
               }
 
-              chromaHashesForElement($input).css({
-                backgroundColor: "#FFF",
-                opacity: 0
-              })
+              chromaHashesForElement($input)[jqApplyStyle]({
+                "background": "#FFF",
+                "opacity": 0
+              });
 
               $input.bind('keyup', trigger).bind('blur', trigger);
             });

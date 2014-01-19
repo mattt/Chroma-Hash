@@ -86,12 +86,12 @@
                   "margin": 0 + "px",
                   "marginLeft": -8 * (++i) + "px",
 
-                  "transition": "background-color 0.5s",
-                  "-moz-transition": "background-color 0.5s",
-                  "-webkit-transition": "background-color 0.5s",
-                  "-khtml-transition": "background-color 0.5s",
-                  "-o-transition": "background-color 0.5s",
-                  "-ms-transition": "background-color 0.5s",
+                  "transition": "background 0.5s",
+                  "-moz-transition": "background 0.5s",
+                  "-webkit-transition": "background 0.5s",
+                  "-khtml-transition": "background 0.5s",
+                  "-o-transition": "background 0.5s",
+                  "-ms-transition": "background 0.5s",
                 };
 
                 if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf('Chrome') < 0) {

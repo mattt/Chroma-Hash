@@ -33,6 +33,7 @@ $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf"
 
 Chroma-Hash is also available in your choice of Javascript libraries and languages:
 
+- [CHChromaHashView (Mattt Thompson)](https://github.com/mattt/CHChromaHashView)
 - [YUI3 - foxxtrot (Jeff Craig)](http://github.com/foxxtrot/Chroma-Hash)
 - [Prototype - wki (Wolfgang Kinkeldei)](http://github.com/wki/Chroma-Hash)
 - [pyChroma (Python) - leegao (Lee Gao)](http://github.com/leegao/pyChroma)

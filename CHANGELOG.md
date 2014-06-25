@@ -1,3 +1,7 @@
+## Version 1.0.1 [2014-06-25]
+
+- [Bugfix] Fixed rendering issues in Chrome and Firefox
+
 ## Version 1.0.0 [2014-06-25]
 
 - [Bugfix] Fixed race condition that caused colors to differ slightly when typing quickly

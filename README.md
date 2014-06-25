@@ -33,10 +33,12 @@ $("input:password").chromaHash({bars: 3, salt:"7be82b35cb0199120eea35a4507c9acf"
 
 Chroma-Hash is also available in your choice of Javascript libraries and languages:
 
-- [YUI3 - foxxtrot (Jeff Craig)](http://github.com/foxxtrot/Chroma-Hash)
-- [Prototype - wki (Wolfgang Kinkeldei)](http://github.com/wki/Chroma-Hash)
-- [pyChroma (Python) - leegao (Lee Gao)](http://github.com/leegao/pyChroma)
-- [ChromaHash4j (Java) - efi (Thomas Efer)](http://github.com/efi/ChromaHash4j)
+- [CHChromaHashView (iOS) - @mattt (Mattt Thompson)](https://github.com/mattt/CHChromaHashView)
+- [ChromaHashView (Android) - @michaelevans (Michael Evans)](https://github.com/MichaelEvans/ChromaHashView)
+- [YUI3 - @foxxtrot (Jeff Craig)](http://github.com/foxxtrot/Chroma-Hash)
+- [Prototype - @wki (Wolfgang Kinkeldei)](http://github.com/wki/Chroma-Hash)
+- [pyChroma (Python) - @leegao (Lee Gao)](http://github.com/leegao/pyChroma)
+- [ChromaHash4j (Java) - @efi (Thomas Efer)](http://github.com/efi/ChromaHash4j)
 
 > For the more acoustically-inclined, be sure to check out [Sonic-Hash](http://mattt.github.com/Sonic-Hash/), which is like its older brother, but uses sounds instead of colors.
 

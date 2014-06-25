@@ -99,10 +99,10 @@
                             "-ms-transition": "background 0.5s",
                         };
 
-                        if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
-                            properties.marginTop = "3px";
+                        if (navigator.userAgent.indexOf("Safari") > -1) {
+                            properties["marginTop"] = "3px";
                         } else {
-                            properties.marginTop = "1px";
+                            properties["marginTop"] = "1px";
                         }
 
                         $(this).css(properties);

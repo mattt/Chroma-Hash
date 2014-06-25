@@ -5,43 +5,40 @@
     <title>Chroma-Hash</title>
     <meta name="author" content="Mattt Thompson"/>
     <meta name="description" content="Chroma-Hash is a sexy, secure visualization of password field input"/>
-    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="jquery.chroma-hash.js" type="text/javascript" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="http://opensource.org/licenses/mit-license" rel="license"/>
+    <style type="text/css" media="screen">
+      body{background:#ddd;font-size:120%;font-family:"Helvetica",Helvetica,sans-serif;}
+      hgroup{text-align:center;margin-bottom: 2em;}
+      h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
+      h2{color:#888;font-family:"Palantino",Georgia;  font-size:0.75em;font-style:italic;font-weight:normal;}
+      p,label, span{text-shadow:1px 1px 1px #f2f2f2;}
+      label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
+      p{font-size:77%;color:#444;}
+      input{width: 100%;font-size:1.5em;margin-bottom:0.75em;}
+      a{color:#444;}
+      a:hover{background:#ddd;}
+      a:visited{color:#565656;}
+      a:active{color:#fff;background:#444;text-shadow:none;}
+      fieldset{border:none;}
+      hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
+      .container, .footer{max-width:480px;}
+      .container{padding:1em;margin:2em auto;background:#fff;border-radius:11px;box-shadow:0px 2px 5px #888;box-sizing:content-box;
+      }
+      footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:1em; width: 100%;}
+      footer p{display:block;line-height:1.5em;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="jquery.chroma-hash.js"></script>
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         $("input:password").chromaHash({bars: 3});
         $("#username").focus();
       });
     </script>
-    <style type="text/css" media="screen">
-      body{background:#ddd;font-size:120%;font-family:"Helvetica",Helvetica,sans-serif;}
-      hgroup{text-align:center;}
-      h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
-      h2{color:#888;width:80%;margin:0.5em auto 30px auto;font-family:"Palantino",Georgia;  font-size:80%;font-style:italic;font-weight:normal;}
-      p,label, span{text-shadow:1px 1px 1px #f2f2f2;}
-      label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
-      p{font-size:77%;color:#444;}
-      input{width:440px;font-size:1.5em;margin-bottom:0.75em;}
-      a{color:#444;}
-      a:hover{background:#ddd;}
-      a:visited{color:#565656;}
-      a:active{color:#fff;background:#444;text-shadow:none;}
-      fieldset{width:440px;margin:10px auto;border:none;}
-      hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
-      .container, .footer{width:480px;}
-      .container{padding:30px 30px;margin:30px auto 30px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11  px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:0px 2px 5px #888;-khtml-box-sizing:content-box;box-sizing:content-box;
-      }
-      footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:0.6em;}
-      footer p{display:block;line-height:1.5em;}
-      #github-ribbon{position: absolute; top: 0; right: 0; border: 0;}
-    </style>
-    <link href="http://opensource.org/licenses/mit-license" rel="license"/>
   </head>
 
   <body>
-    <a href="https://github.com/mattt/Chroma-Hash/" title="Chroma-Hash Repository">
-      <img id="github-ribbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/>
-    </a>
     <div class="container">
       <hgroup>
         <h1>Chroma-Hash</h1>
@@ -57,7 +54,8 @@
       </fieldset>
     </div>
     <footer>
-      <p>Created by <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a>, and released under the <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a>.</p>
+      <p><nobr>Created by <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a></nobr>, and <nobr>released under the <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a></nobr>.</p>
+      <p>Source code <a href="https://github.com/mattt/Chroma-Hash/" title="Source code available on GitHub" rel="nofollow">available on GitHub</a>.</p>
     </footer>
   </body>
 </html>

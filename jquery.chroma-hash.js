@@ -13,9 +13,13 @@
 
     var transition = (function () {
         var body = document.body || document.documentElement,
-            style = body.style,
-            prefixes = ["", "moz", "webkit", "khtml", "o", "ms"];
+            style = body.style;
 
+        if (typeof style["transition"] === "string") {
+            return true;
+        }
+
+        var prefixes = ["moz", "webkit", "khtml", "o", "ms"];
         for (var p in prefixes) {
             if (typeof style[prefixes[p] + "Transition"] === "string") {
                 return true;
@@ -95,10 +99,10 @@
                             "-ms-transition": "background 0.5s",
                         };
 
-                        if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
-                            properties.marginTop = "3px";
+                        if (navigator.userAgent.indexOf("Safari") > -1) {
+                            properties["marginTop"] = "3px";
                         } else {
-                            properties.marginTop = "1px";
+                            properties["marginTop"] = "1px";
                         }
 
                         $(this).css(properties);

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='utf-8'>
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
     <title>Chroma-Hash</title>
     <meta name="author" content="Mattt Thompson"/>
     <meta name="description" content="Chroma-Hash is a sexy, secure visualization of password field input"/>
@@ -22,7 +22,6 @@
       label{color:#444;display:block;font-variant:small-caps;text-transform:lowercase;}
       p{font-size:77%;color:#444;}
       input{width:440px;font-size:1.5em;margin-bottom:0.75em;}
-      .explanation{text-align:center;}
       a{color:#444;}
       a:hover{background:#ddd;}
       a:visited{color:#565656;}
@@ -33,14 +32,15 @@
       .container{padding:30px 30px;margin:30px auto 30px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11  px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:0px 2px 5px #888;-khtml-box-sizing:content-box;box-sizing:content-box;
       }
       footer{margin:0 auto;display:block;color:#555;text-align:center;font-size:0.6em;}
-      footer span{display:block;line-height:1.5em;}
+      footer p{display:block;line-height:1.5em;}
+      #github-ribbon{position: absolute; top: 0; right: 0; border: 0;}
     </style>
     <link href="http://opensource.org/licenses/mit-license" rel="license"/>
   </head>
 
   <body>
     <a href="https://github.com/mattt/Chroma-Hash/" title="Chroma-Hash Repository">
-      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on   GitHub"/>
+      <img id="github-ribbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/>
     </a>
     <div class="container">
       <hgroup>
@@ -49,19 +49,15 @@
       </hgroup>
       <fieldset>
         <label>Username</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" autocapitalize="off" autocorrect="off" autofocus="autofocus" tabindex="1" x-webkit-speech="x-webkit-speech"/>
         <label>Password</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" tabindex="2"/>
         <label>Confirm Password</label>
-        <input type="password" name="confirm-password" id="confirm-password">
+        <input type="password" name="confirm-password" id="confirm-password" tabindex="3"/>
       </fieldset>
-      <hr/>
-      <div class="explanation">
-        <p>Looking for some more explanation? Have some feedback?<br/>Check out <a href="http://mattt.me/2009/11/chroma-hash-revisited/">my most recent blog post about Chroma-Hash</a></p>
-      </div>
     </div>
     <footer>
-      <span class="copyright">© <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a> - Released Under an <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a></span>
+      <p>Created by <a href="http://twitter.com/mattt" title="@mattt" rel="me">Mattt Thompson</a>, and released under the <a href="http://opensource.org/licenses/mit-license" rel="license">MIT License</a>.</p>
     </footer>
   </body>
 </html>

@@ -116,7 +116,7 @@
                         });
                     } else {
                         chromaHashesForElement(this).each(function (i) {
-                            var color = ("#" + colors[i] + "000000").slice(0, 7)
+                            var color = ("#" + colors[i] + "000000").slice(0, 7);
                             $(this).stop()[transition]("background", color);
                         });
                     }

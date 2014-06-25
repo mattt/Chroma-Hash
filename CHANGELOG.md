@@ -1,3 +1,9 @@
+## Version 1.0.0 [2014-06-25]
+
+- [Bugfix] Fixed race condition that caused colors to differ slightly when typing quickly
+- [Changed] Using CSS transitions when supported, falling back on jQuery `animate()` (joshdick)
+- [Changed] Refactored and modernized code base
+
 ## Version 0.4.2 [2013-11-16]
 
 - [Bugfix] Fixed issue where incorrect colors appear when typing quickly

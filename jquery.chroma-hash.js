@@ -2,7 +2,7 @@
  * Chroma-Hash : A sexy, secure visualization of password field input
  * http://github.com/mattt/Chroma-Hash/
  *
- * Copyright (c) 2009-2012 Mattt Thompson (http://mattt.me)
+ * Copyright (c) 2009-2014 Mattt Thompson (http://mattt.me)
  * Released under the MIT license.
  *
  * Inspired by HashMask by Chris Dary
@@ -10,27 +10,19 @@
  */
 
 (function($) {
+    var transition = (function() {
+        var body = document.body || document.documentElement,
+            style = body.style,
+            prefixes = ["", "moz", "webkit", "khtml", "o", "ms"];
 
-    //Adapted from http://stackoverflow.com/a/7265037/278810
-    var transitionSupport = (function() {
-        var b = document.body || document.documentElement;
-        var s = b.style;
-        var p = "transition";
-
-        //Test for standard transition property
-        if (typeof s[p] == 'string') { return true; }
-
-        //Test for vendor-specific transition properties
-        v = ["moz", "webkit", "khtml", "o", "ms"],
-        p = p.charAt(0).toUpperCase() + p.substr(1);
-        for (var i = 0; i < v.length; i++) {
-          if (typeof s[v[i] + p] == "string") { return true; }
+        for (var i in prefixes) {
+          if (typeof style[prefixes[i] + "Transition"] === "string") {
+            return true;
+          }
         }
-        return false;
-    })();
 
-    //If the browser doesn't support CSS transitions, fall back to jQuery.animate()
-    var jqApplyStyle = transitionSupport ? "css" : "animate";
+        return false;
+    })() ? "css" : "animate";
 
     $.fn.extend({
       chromaHash: function(options) {
@@ -39,8 +31,8 @@
           salt: "7be82b35cb0199120eea35a4507c9acf",
           minimum: 6
         };
-
         options = $.extend(defaults, options);
+
         var incrementingID = 0;
 
         return this.each(function() {
@@ -53,37 +45,36 @@
 
             var chromaHashesForElement = function(e) {
               var id = $(e).attr('id');
-
               return $("label.chroma-hash").filter(function(l) {
-                return $(this).attr('for') == id;
+                return $(this).attr('for') === id;
               });
             };
 
             var trigger = function(e) {
-              var input = $(this);
+              var $input = $(this);
 
-              if (input.val() === "") {
-                chromaHashesForElement(this)[jqApplyStyle]({
-                  "background": "#FFF",
-                  "opacity": 0
+              if ($input.val() === "") {
+                chromaHashesForElement(this)[transition]({
+                  "background": "",
+                  "opacity": "0"
                 });
 
                 return;
               }
 
-              position = input.position();
-              height = input.outerHeight();
-              width = input.outerWidth();
+              var position = $input.position(),
+                  height = $input.outerHeight(),
+                  width = $input.outerWidth();
 
               chromaHashesForElement(this).each(function(i) {
-                properties = {
-                  "position": 'absolute',
-                  "opacity": 1.0,
+                var properties = {
+                  "position": "absolute",
+                  "opacity": "1.0",
                   "left": position.left + width - 1,
                   "top": position.top,
                   "height": height - 2 + "px",
-                  "width": 8 + "px",
-                  "margin": 0 + "px",
+                  "width": "8px",
+                  "margin": "0px",
                   "marginLeft": -8 * (++i) + "px",
 
                   "transition": "background 0.5s",
@@ -94,41 +85,35 @@
                   "-ms-transition": "background 0.5s",
                 };
 
-                if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf('Chrome') < 0) {
-                  properties.marginTop = 3 + "px";
+                if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
+                  properties.marginTop = "3px";
                 } else {
-                  properties.marginTop = 1 + "px";
+                  properties.marginTop = "1px";
                 }
 
                 $(this).css(properties);
               });
 
-              var id = input.attr('id');
-              var md5 = hex_md5('' + input.val() + ':' + options.salt);
-              var colors = md5.match(/([\dABCDEF]{6})/ig);
+              var id = $input.attr('id'),
+                  md5 = hex_md5('' + $input.val() + ':' + options.salt),
+                  colors = md5.match(/([\dABCDEF]{6})/ig);
 
-              if (input.val().length < options.minimum) {
+              if ($input.val().length < options.minimum) {
                 chromaHashesForElement(this).each(function(i) {
-                  var g = (parseInt(colors[i], 16) % 0xF).toString(16);
-                  $(this).stop()[jqApplyStyle]("background", "#" + g + g + g);
+                  var gray = (parseInt(colors[i], 16) % 0xF).toString(16);
+                  var color = "#" + gray + gray + gray;
+                  $(this).stop()[transition]("background", color);
                 });
               } else {
                 chromaHashesForElement(this).each(function(i) {
-                  var color = parseInt(colors[i], 16);
-                  var red = (color >> 16) & 255;
-                  var green = (color >> 8) & 255;
-                  var blue = color & 255;
-                  var hex = $.map([red, green, blue], function(c, i) {
-                    return ((c >> 4) * 0x10).toString(16);
-                  }).join('');
-
-                  $(this).stop()[jqApplyStyle]("background", "#" + hex);
+                  var color = ("#" + colors[i] + "000000").slice(0, 7)
+                  $(this).stop()[transition]("background", color);
                 });
               }
             };
 
             $(this).each(function(e) {
-              $input = $(this);
+              var $input = $(this);
 
               var id = $input.attr('id');
               if (!id || id === "") {
@@ -139,11 +124,6 @@
               for (var c in colors) {
                 $input.after('<label for="' + id + '" class="' + colors[c] + ' chroma-hash"></label>');
               }
-
-              chromaHashesForElement($input)[jqApplyStyle]({
-                "background": "#FFF",
-                "opacity": 0
-              });
 
               $input.bind('keyup', trigger).bind('blur', trigger);
             });

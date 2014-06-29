@@ -1,0 +1,35 @@
+{
+  "name": "chroma-hash",
+  "version": "1.0.1",
+  "author": "Mattt Thompson (http://mattt.me)",
+  "description": "A sexy, secure visualization of password field input.",
+  "license": "MIT",
+  "homepage": "https://github.com/mattt/Chroma-Hash",
+  "main": "./jquery.chroma-hash.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattt/Chroma-Hash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattt/Chroma-Hash/issues"
+  },
+  "keywords": [
+    "jquery",
+    "password",
+    "visualization",
+    "secure",
+    "hash",
+    "plugin",
+    "browser"
+  ],
+  "files": [
+    "CHANGELOG.md",
+    "jquery.chroma-hash.js",
+    "README.md"
+  ],
+  "jam": {
+    "dependencies": {
+      "jquery": ">=1.3.0"
+    }
+  }
+}

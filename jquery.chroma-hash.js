@@ -97,6 +97,12 @@
                             "-khtml-transition": "background 0.5s",
                             "-o-transition": "background 0.5s",
                             "-ms-transition": "background 0.5s",
+
+                            "transition-delay": '400ms',
+                            "-moz-transition-delay": '400ms',
+                            "-webkit-transition-delay": '400ms',
+                            "-khtml-transition-delay": '400ms',
+                            "-o-transition-delay": '400ms',
                         };
 
                         if (navigator.userAgent.indexOf("Safari") > -1) {
@@ -112,7 +118,13 @@
                         digest = hexdigest('' + $input.val() + ':' + options.salt),
                         colors = digest.match(/([\dABCDEF]{6})/ig);
 
-                    if ($input.val().length < options.minimum) {
+                    if ($input.val().length == 1) {
+                        chromaHashesForElement(this).each(function (i) {
+                            var gray = (parseInt((Math.random() * 16777215 + ''), 16) % 0xF).toString(16);
+                            var color = "#" + gray + gray + gray;
+                            $(this).stop()[transition]("background", color);
+                        });
+                    } else if ($input.val().length < options.minimum) {
                         chromaHashesForElement(this).each(function (i) {
                             var gray = (parseInt(colors[i], 16) % 0xF).toString(16);
                             var color = "#" + gray + gray + gray;

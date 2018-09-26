@@ -41,7 +41,7 @@ Chroma-Hash is also available in your choice of JavaScript libraries and languag
 
 > For the more acoustically-inclined, 
 > check out [Sonic-Hash](http://mattt.github.com/Sonic-Hash/), 
-> which is like its older brother, but uses sounds instead of colors.
+> which uses sounds instead of colors.
 
 ## Credit
 
